@@ -13,12 +13,13 @@
 #include "../include/shutdown.h"
 #include "../include/read_input.h"
 #include "../include/reboot.h"
+#include "../include/nuntius.h"
 
 
 #define WINDOW_WIDTH 60
 #define WINDOW_HEIGHT 15
 #define WINDOW_X 10
-#define WINDOW_Y 7
+#define WINDOW_Y 8
 
 int index() {
     // Clear screen
@@ -45,15 +46,18 @@ int index() {
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 5);
     print_string("4. Terminal");
-    
+
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 6);
-    print_string("5. Power Off");
+    print_string("5. Nuntius");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 7);
-    print_string("6. Reboot");
+    print_string("6. Power Off");
+    
+    vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 8);
+    print_string("7. Reboot");
     
     // Draw status bar
-    set_color(BLUE);
+    set_color(LIGHT_BLUE);
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + WINDOW_HEIGHT - 2);
     print_string("Use numbers 1-5 to select an option\n");
 
@@ -90,8 +94,15 @@ int index() {
                 vga_clear_screen();
                 shell();
                 return 0;  // Return to shell
-                
+            
             case '5':
+                // AI
+                vga_clear_screen();
+                nuntius(0, NULL);
+                running = 0;
+                break;
+
+            case '6':
                 // Power off
                 vga_clear_screen();
                 set_color(LIGHT_RED);
@@ -112,7 +123,7 @@ int index() {
                     return 0;
                 }
                 break;
-            case '6':
+            case '7':
                     // Reboot
                     vga_clear_screen();
                     set_color(LIGHT_RED);

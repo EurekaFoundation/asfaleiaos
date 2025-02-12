@@ -27,6 +27,7 @@
 #include "../include/index.h"
 #include "../include/fs_global.h"
 #include "../include/read_input.h"
+#include "../include/nuntius.h"
 
 
 //#define MAX_INPUT_LENGTH 128  // Lunghezza massima dell'input
@@ -68,6 +69,7 @@ int appcd(int argc, char* argv[]);
 int apppwd(int argc, char* argv[]);
 int appdelete_dir(int argc, char* argv[]);
 int app_index(void);
+int app_nuntius(void);
 int appstatus_of_pc(void);
 
 int app_echo(int argc, char* argv[]) {
@@ -150,6 +152,10 @@ int appstatus_of_pc(void) {
     show_battery_status();
     return 0;
 }
+int app_nuntius(void) {
+    nuntius();
+    return 0;
+}
 
 struct command {
     const char* name;        
@@ -178,6 +184,7 @@ static const struct command commands[] = {
     {"index", app_index, 0, "Show the index"},
     {"status", appstatus_of_pc, 0, "Show the status of the PC"},
     {"deldir", appdelete_dir, 1, "Delete a directory"},
+    {"nuntius", app_nuntius, 0, "Chat with the AI"},
     {0, 0, 0, 0}
 };
 
