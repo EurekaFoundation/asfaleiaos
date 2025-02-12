@@ -341,7 +341,8 @@ void shell() {
         vga_set_cursor(shell_x, shell_y);
         set_color(YELLOW);
         print_string(" ");
-        print_string(get_date_string());
+        //print_string(get_date_string());
+        print_string(date());
         print_string("\n");
         print_string("root@asfaleia:");
 
@@ -369,7 +370,8 @@ void timer_handler() {
     if (ticks % 18 == 0) {
         clear_line(7);
         set_color(YELLOW);  // Set color for date
-        print_string(get_date_string());
+        //print_string(get_date_string());
+        print_string(date());
         set_color(WHITE);   // Reset color
     }
 }
