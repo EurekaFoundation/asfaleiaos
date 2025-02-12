@@ -8,7 +8,7 @@
 #include "../include/reboot.h"
 #include "../include/calc.h"
 #include "../include/date.h"
-#include "../include/clear_screen.h"
+//#include "../include/clear_screen.h"
 #include "../include/color.h"
 #include "../include/vga.h"
 #include "../include/NULL.h"
@@ -322,7 +322,7 @@ void shell() {
     char input[MAX_INPUT_LENGTH];
     char current_path[1024];
     
-    clear_screen();
+    vga_clear_screen();
     
     set_color(YELLOW);
     print_string("            _____ ______      _      ______ _____             ____   _____   \\\n");
