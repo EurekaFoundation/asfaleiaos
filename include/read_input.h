@@ -7,5 +7,5 @@
 #include "print_string.h"
 
 void read_input(char* buffer);
-
+float get_float(void);
 #endif

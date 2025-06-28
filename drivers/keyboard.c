@@ -10,6 +10,8 @@
 #define EXTENDED_KEY 0xE0
 #define UP_ARROW 0x48
 #define DOWN_ARROW 0x50
+#define KEY_F1 0x70  // Special code for F1
+#define KEY_F2 0x71  // Special code for F2
 
 
 volatile char key_buffer[256];
@@ -87,6 +89,16 @@ char get_key() {
         return 0;
     }
     
+    // Gestione speciale per F1 e F2
+    if (scancode == 0x3B) {
+        last_scancode = scancode;
+        return KEY_F1;
+    }
+    if (scancode == 0x3C) {
+        last_scancode = scancode;
+        return KEY_F2;
+    }
+    
     if (scancode == last_scancode) {
         return 0;
     }
@@ -130,7 +142,7 @@ char scancode_to_ascii(unsigned char scancode) {
         case 0x51: return '3';
         case 0x52: return '0';
         case 0x53: return '.';
-        case 0x56: return '<';
+        case 0x56: return '>';
         case 0x33: return ',';
         case 0x34: return '.';
         case 0x0D: return 'i';
@@ -160,9 +172,79 @@ char scancode_to_ascii(unsigned char scancode) {
         case 0x30: return 'b';
         case 0x31: return 'n';
         case 0x32: return 'm';
+        case 0x01: return 27;
+        case 0x3B: return 0x70;
+        case 0x3C: return KEY_F2;
         case 0x39: return ' '; // Space
         case BACKSPACE_SCANCODE: return '\b'; // Backspace
         case ENTER_SCANCODE: return '\n'; // Enter
         default: return 0;
     }
 }
+
+#if 0
+#define KEYBOARD_PORT 0x60
+#define KEY_F1 0x3B
+#define KEY_F2 0x3C
+#define BUFFER_SIZE 256
+
+static unsigned char key_buffer[BUFFER_SIZE];
+static int buffer_index = 0;
+
+// Scancode lookup table
+static const char scancode_map[128] = {
+    0, 27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b',
+    '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n',
+    0, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`',
+    0, '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0,
+    '*', 0, ' '
+};
+
+void byte_to_hex(unsigned char byte, char* buffer) {
+    const char hex_chars[] = "0123456789ABCDEF";
+    buffer[0] = hex_chars[(byte >> 4) & 0x0F];
+    buffer[1] = hex_chars[byte & 0x0F];
+    buffer[2] = '\0';
+}
+
+void keyboard_handler() {
+    unsigned char scancode = inb(KEYBOARD_PORT);
+    
+    // Debug output
+    char debug[3];
+    byte_to_hex(scancode, debug);
+    print_string("Scancode: 0x");
+    print_string(debug);
+    print_string("\n");
+    
+    // Handle function keys
+    if(scancode == KEY_F1 || scancode == KEY_F2) {
+        key_buffer[buffer_index++] = scancode;
+        if (buffer_index >= BUFFER_SIZE) {
+            buffer_index = 0;
+        }
+        return;
+    }
+    
+    // Handle regular keys
+    if(scancode < 128) {
+        char ascii = scancode_map[scancode];
+        if(ascii) {
+            key_buffer[buffer_index++] = ascii;
+            if (buffer_index >= BUFFER_SIZE) {
+                buffer_index = 0;
+            }
+            vga_putchar(ascii);
+            vga_update_cursor();
+        }
+    }
+}
+
+char get_key() {
+    if(buffer_index > 0) {
+        return key_buffer[--buffer_index];
+    }
+    return 0;
+}
+
+#endif

@@ -22,8 +22,8 @@ void help(){
     print_string("cd - Change directory\n");
     print_string("pwd - Show current directory\n");
     print_string("deldir - Delete a directory\n");
-    print_string("index - Desktop");
-    print_string("nuntius - Chatbot AI(BETA)");
+    print_string("index - Desktop\n");
+    print_string("nuntius - Chatbot AI(BETA)\n");
 
     print_string("\n");
 

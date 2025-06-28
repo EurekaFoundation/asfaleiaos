@@ -213,3 +213,28 @@ int fs_delete_directory(FileSystem* fs, const char* name) {
     print_string("Error: Directory not found\n");
     return -1;
 }
+
+FileHandle* fs_open(FileSystem* fs, const char* filename, const char* mode) {
+    if (!fs || !filename || !mode) return NULL;
+    
+    FileHandle* handle = (FileHandle*)my_malloc(sizeof(FileHandle));
+    if (!handle) return NULL;
+    
+    handle->name = (char*)filename;
+    handle->mode = (mode[0] == 'r') ? 0 : 1; // 0 for read, 1 for write
+    handle->handle = 0; // First available handle
+    
+    return handle;
+}
+
+void fs_close(FileSystem* fs, FileHandle* file) {
+    if (!fs || !file) return;
+    my_free(file);
+}
+
+int fs_read(FileSystem* fs, FileHandle* file, char* buffer, int size) {
+    if (!fs || !file || !buffer || size <= 0) return -1;
+    if (file->mode != 0) return -1; // Not opened for reading
+    
+    return fs_read_file(fs, file->name, buffer, size);
+}

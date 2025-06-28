@@ -47,3 +47,15 @@ clean:
 iso: kernel.bin
 	chmod +x build_iso.sh
 	./build_iso.sh
+
+# Test QEMU
+qemu:
+	qemu-system-i386 -kernel kernel.bin
+
+help:
+	@echo "Usage: make [all|clean|iso|qemu|help]"
+	@echo "  all:      Build the kernel"
+	@echo "  clean:    Remove all generated files"
+	@echo "  iso:      Create the ISO image"
+	@echo "  qemu:     Run the kernel in QEMU"
+	@echo "  help:     Show this help message"

@@ -21,6 +21,16 @@ typedef struct {
     File* current_directory;
 } FileSystem;
 
+typedef struct {
+    char* name;
+    int handle;
+    int mode;  // 'r' for read, 'w' for write
+} FileHandle;
+
+// Function declarations
+FileHandle* fs_open(FileSystem* fs, const char* filename, const char* mode);
+void fs_close(FileSystem* fs, FileHandle* file);
+int fs_read(FileSystem* fs, FileHandle* file, char* buffer, int size);
 void fs_init(FileSystem* fs);
 int fs_create_file(FileSystem* fs, const char* name);
 int fs_write_file(FileSystem* fs, const char* name, const char* data, int size);

@@ -1,5 +1,6 @@
 #include "../include/vga.h"
 #include "../include/io.h"
+#include "../include/graphics.h"
 
 #define VGA_MEMORY 0xB8000
 #define VGA_WIDTH 80
@@ -9,8 +10,56 @@ static int cursor_x = 0;
 static int cursor_y = 0;
 static unsigned char current_color = 0x07;
 volatile unsigned char *vga_buffer = (volatile unsigned char*)VGA_MEMORY;
+volatile unsigned char* graphics_buffer = (volatile unsigned char*)VGA_GRAPHICS_MEMORY;
+
 
 static void update_hw_cursor(void);
+
+void vga_set_graphics_mode(void) {
+    // Setup Mode 13h
+    outb(0x3C2, 0x63);
+    outb(0x3D4, 0x0A); outb(0x3D5, 0x20);
+    outb(0x3D4, 0x0B); outb(0x3D5, 0x00);
+    outb(0x3D4, 0x0C); outb(0x3D5, 0x00);
+    outb(0x3D4, 0x0D); outb(0x3D5, 0x00);
+    outb(0x3C4, 0x00); outb(0x3C5, 0x03);
+    outb(0x3C4, 0x01); outb(0x3C5, 0x01);
+    outb(0x3CE, 0x05); outb(0x3CF, 0x40);
+    outb(0x3CE, 0x06); outb(0x3CF, 0x05);
+    outb(0x3C0, 0x30); outb(0x3C0, 0x41);
+    outb(0x3C0, 0x33); outb(0x3C0, 0x00);
+    
+    // Set up a basic VGA palette
+    outb(0x3C8, 0x00);  // Start at color 0
+    
+    // Color 0: Black
+    outb(0x3C9, 0); outb(0x3C9, 0); outb(0x3C9, 0);
+    
+    // Color 1: White
+    outb(0x3C9, 63); outb(0x3C9, 63); outb(0x3C9, 63);
+    
+    // Color 2: Red
+    outb(0x3C9, 63); outb(0x3C9, 0); outb(0x3C9, 0);
+    
+    // Color 3: Green
+    outb(0x3C9, 0); outb(0x3C9, 63); outb(0x3C9, 0);
+    
+    // Color 4: Blue
+    outb(0x3C9, 0); outb(0x3C9, 0); outb(0x3C9, 63);
+    
+    // Color 5: Yellow
+    outb(0x3C9, 63); outb(0x3C9, 63); outb(0x3C9, 0);
+    
+    // Color 6: Magenta
+    outb(0x3C9, 63); outb(0x3C9, 0); outb(0x3C9, 63);
+    
+    // Color 7: Cyan
+    outb(0x3C9, 0); outb(0x3C9, 63); outb(0x3C9, 63);
+}
+
+uint32_t* get_vga_framebuffer(void) {
+    return (uint32*)VGA_GRAPHICS_MEMORY;
+}
 
 void vga_init(void) {
     current_color = 0x07;

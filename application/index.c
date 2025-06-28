@@ -14,12 +14,13 @@
 #include "../include/read_input.h"
 #include "../include/reboot.h"
 #include "../include/nuntius.h"
-
+#include "../include/texteditor.h"
+#include "../include/scientific.h"
 
 #define WINDOW_WIDTH 60
 #define WINDOW_HEIGHT 15
 #define WINDOW_X 10
-#define WINDOW_Y 8
+#define WINDOW_Y 9
 
 int index() {
     // Clear screen
@@ -49,12 +50,15 @@ int index() {
 
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 6);
     print_string("5. Nuntius");
-    
+
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 7);
-    print_string("6. Power Off");
+    print_string("6. Scientific Calculator");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 8);
-    print_string("7. Reboot");
+    print_string("7. Power Off");
+    
+    vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 9);
+    print_string("8. Reboot");
     
     // Draw status bar
     set_color(LIGHT_BLUE);
@@ -78,7 +82,7 @@ int index() {
             case '2':
                 // Text Editor
                 vga_clear_screen();
-                // TODO: Add text editor
+                text_editor();
                 running = 0;
                 break;
                 
@@ -101,8 +105,14 @@ int index() {
                 nuntius(0, NULL);
                 running = 0;
                 break;
-
             case '6':
+                // Scientific Calculator
+                vga_clear_screen();
+                scientificalc();
+                running = 0;
+                break;
+
+            case '7':
                 // Power off
                 vga_clear_screen();
                 set_color(LIGHT_RED);
@@ -123,7 +133,7 @@ int index() {
                     return 0;
                 }
                 break;
-            case '7':
+            case '8':
                     // Reboot
                     vga_clear_screen();
                     set_color(LIGHT_RED);
