@@ -49,13 +49,13 @@ int scientificalc(/*int args, char* argv[]*/) {
     }
     print_double(risultato);
     print_string("\n");
-    } else if(strncmp(input, "quadrato ", 9) == 0) {
+    } else if(strncmp(input, "quadrato", 9) == 0) {
         double valore = string_to_double(input + 9); // Converte la parte dopo "quadrato "
         double risultato = quadrato(valore);
         print_string("Risultato: ");
         print_double(risultato);
         print_string("\n");
-    } else if(strncmp(input, "seno ", 5) == 0) {
+    } else if(strncmp(input, "seno", 5) == 0) {
         double valore = string_to_double(input + 5); // Converte la parte dopo "seno "
         double risultato = seno(valore);
         print_string("Risultato: ");
@@ -64,6 +64,40 @@ int scientificalc(/*int args, char* argv[]*/) {
     } else if(strncmp(input, "coseno ", 7) == 0) {
         double valore = string_to_double(input + 7); // Converte la parte dopo "coseno "
         double risultato = coseno(valore);
+        print_string("Risultato: ");
+        print_double(risultato);
+        print_string("\n");
+    }
+     else if(strncmp(input, "ln ", 3) == 0) {
+        double valore = string_to_double(input + 3); // Converte la parte dopo "ln "
+        double risultato = log(valore);
+        print_string("Risultato: ");
+        print_double(risultato);
+        print_string("\n");
+    }
+     else if(strncmp(input, "pow ", 4) == 0) {
+        // parse base and exponent from "pow <base> <exp>"
+        char *p = input + 4;
+        while (*p == ' ') p++;
+        if (*p == '\0') {
+            print_string("Usage: pow <base> <exponent>\n");
+            continue;
+        }
+
+        double base = string_to_double(p);
+
+        // find start of exponent token
+        char *q = p;
+        while (*q && *q != ' ') q++;
+        while (*q == ' ') q++;
+        if (*q == '\0') {
+            print_string("Usage: pow <base> <exponent>\n");
+            continue;
+        }
+
+        int exponent = (int)string_to_double(q);
+        double risultato = pow(base, exponent);
+
         print_string("Risultato: ");
         print_double(risultato);
         print_string("\n");

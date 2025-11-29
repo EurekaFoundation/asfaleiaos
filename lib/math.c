@@ -16,18 +16,28 @@ double radice(double x) {
 
 double pow(double base, int esponente) {
     double risultato = 1.0;
-    
-    for (int i; i < esponente; i++){
+
+    if (esponente == 0) return 1.0;
+
+    int e = esponente;
+    int negative = 0;
+    if (e < 0) { negative = 1; e = -e; }
+
+    for (int i = 0; i < e; i++) {
         risultato *= base;
     }
-    return risultato;
 
+    if (negative) {
+        // handle division by zero naturally (returns +inf or NaN)
+        return 1.0 / risultato;
+    }
+    return risultato;
 }
 
 double log(double x) {
     if (x <= 0.0) {
         // Il logaritmo per x <= 0 non è definito. Imposta errno come fa math.h
-        errno = EDOM; // Errore di dominio
+       // errno = EDOM; // Errore di dominio
         return 0.0 / 0.0; // Restituisce NaN (Not a Number)
     }
 
@@ -57,7 +67,7 @@ double log(double x) {
     }
 
     // Risultato finale: 2 * sum + (componente esponente * ln(2))
-    return 2.0 * sum + (double)exponent * LN2_APPROX;
+    return 2.0 * sum + (double)exponent * 0.69314718056;
 }
 
 double seno(double x) {

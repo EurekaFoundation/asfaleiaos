@@ -35,7 +35,7 @@ int index() {
     print_string("   / /\\ \\  \\___ \\|  __/ /\\ \\ | |    |  __|   | |   / /\\ \\   | |  | |\\___ \\    \\\n");
     print_string("  / ____ \\ ____ | | / ____ \\| |____| |____ _| |_ / ____ \\  | |__| |____) |   \\\n");
     print_string(" /_/    \\_\\_____/|_|/_/    \\_\\______|______|____/_/    \\_\\  \\____/|_____/    \\\n");
-    print_string("Asfaleia OS 0.0.1 Copyright Eureka Foundation (c) 2025\n");
+    print_string("Asfaleia OS 0.0.1 Copyright Vincenzo M. Franchino (c) 2025\n");
 
 
     // Create main window
@@ -67,13 +67,13 @@ int index() {
     //print_string("6. Scientific Calculator");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 7);
-    print_string("7. Power Off");
+    print_string("7. Math & Physics Programs");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 8);
     print_string("8. Reboot");
 
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 9);
-    print_string("9. Math & Physics Programs");
+    print_string("9. Power Off");
     
     // Draw status bar
     set_color(LIGHT_BLUE);
@@ -127,28 +127,13 @@ int index() {
                 scientificalc();
                 running = 0;
                 break;
-
             case '7':
-                // Power off
+                // Math & Physics Programs
                 vga_clear_screen();
-                set_color(LIGHT_RED);
-                print_string("Are you sure you want to power off? (y/n)\n");
-                c = get_key();
-                read_input(&c);
-                if(c == 'y') {
-                    shutdown();
-                }
-                else if (c == 'n' || c == '\n' || c == '\r') {
-                    vga_clear_screen();
-                    index();
-                    return 0;
-                }
-                else {
-                    vga_clear_screen();
-                    index();
-                    return 0;
-                }
+                scientificprograms();
+                running = 0;
                 break;
+
             case '8':
                     // Reboot
                     vga_clear_screen();
@@ -170,11 +155,27 @@ int index() {
                         return 0;
                     }
                     break;
+            
             case '9':
-                // Math & Physics Programs
+                // Power off
                 vga_clear_screen();
-                scientificprograms();
-                running = 0;
+                set_color(LIGHT_RED);
+                print_string("Are you sure you want to power off? (y/n)\n");
+                c = get_key();
+                read_input(&c);
+                if(c == 'y') {
+                    shutdown();
+                }
+                else if (c == 'n' || c == '\n' || c == '\r') {
+                    vga_clear_screen();
+                    index();
+                    return 0;
+                }
+                else {
+                    vga_clear_screen();
+                    index();
+                    return 0;
+                }
                 break;
                 
         }

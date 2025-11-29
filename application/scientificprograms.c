@@ -31,7 +31,7 @@ int scientificprograms() {
     print_string("   / /\\ \\  \\___ \\|  __/ /\\ \\ | |    |  __|   | |   / /\\ \\   | |  | |\\___ \\    \\\n");
     print_string("  / ____ \\ ____ | | / ____ \\| |____| |____ _| |_ / ____ \\  | |__| |____) |   \\\n");
     print_string(" /_/    \\_\\_____/|_|/_/    \\_\\______|______|____/_/    \\_\\  \\____/|_____/    \\\n");
-    print_string("Asfaleia OS 0.0.1 Copyright Eureka Foundation (c) 2025\n");*/
+    print_string("Asfaleia OS 0.0.1 Vincenzo M. Franchino (c) 2025\n");*/
 
 
     // Create main window
