@@ -14,6 +14,16 @@ double radice(double x) {
     return guess;
 }
 
+double pow(double base, int esponente) {
+    double risultato = 1.0;
+    
+    for (int i; i < esponente; i++){
+        risultato *= base;
+    }
+    return risultato;
+
+}
+
 double seno(double x) {
     // Convert degrees to radians
     x = DEG_TO_RAD(x);
