@@ -9,5 +9,6 @@ double radice(double x);
 double seno(double x);
 double coseno(double x);
 double log(double x);
+double pow(double base, int esponente);
 
 #endif
