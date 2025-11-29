@@ -8,5 +8,6 @@ double quadrato(double x);
 double radice(double x);
 double seno(double x);
 double coseno(double x);
+double log(double x);
 
 #endif
