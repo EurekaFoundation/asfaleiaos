@@ -14,6 +14,7 @@
 #include "../include/scientific.h"
 #include "../include/alert.h"
 #include "../include/scientificprograms.h"
+#include "../include/functions.h"
 
 #define WINDOW_WIDTH 60
 #define WINDOW_HEIGHT 15
@@ -48,7 +49,7 @@ int scientificprograms() {
     print_string("1. Scientific Calculator");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 3);
-    print_string("2. ");
+    print_string("2. Generator of functions");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 4);
     print_string("3. ");
@@ -59,14 +60,14 @@ int scientificprograms() {
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 6);
     print_string("5. ");
 
-    //vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 7);
-    //print_string("6. Scientific Calculator");
+    vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 7);
+    print_string("6. ");
     
-    /*vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 8);
-    print_string("7. Power Off");
+    vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 8);
+    print_string("7. ");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 9);
-    print_string("8. Reboot");*/
+    print_string("8. ");
 
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 10);
     print_string("9. Index Menu");
@@ -74,7 +75,7 @@ int scientificprograms() {
     // Draw status bar
     set_color(LIGHT_BLUE);
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + WINDOW_HEIGHT - 2);
-    print_string("Use numbers 1-5 to select an option\n");
+    print_string("Use numbers 1-9 to select an option\n");
 
     // Handle user input
     char c;
@@ -92,7 +93,9 @@ int scientificprograms() {
                 break;
                 
             case '2':
-                
+                vga_clear_screen();
+                function_plotter();
+                running = 0;
                 break;
                 
             case '3':

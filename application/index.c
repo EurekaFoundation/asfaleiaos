@@ -78,7 +78,7 @@ int index() {
     // Draw status bar
     set_color(LIGHT_BLUE);
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + WINDOW_HEIGHT - 2);
-    print_string("Use numbers 1-5 to select an option\n");
+    print_string("Use numbers 1-9 to select an option\n");
 
     // Handle user input
     char c;
