@@ -16,5 +16,5 @@ size_t strlen(const char* s);
 char* strchr(const char* s, int c);
 char* strtok(char* str, const char* delim);
 char* strcpy(char* dest, const char* src);
-
+double string_to_double(const char* str);
 #endif

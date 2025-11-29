@@ -5,7 +5,7 @@ double quadrato(double x) {
 }
 
 double radice(double x) {
-    if (x < 0) return -1;
+    if (x < 0) return 0;
     double guess = x;
     double epsilon = 0.000001;
     while ((guess * guess - x) > epsilon || (x - guess * guess) > epsilon) {
@@ -15,23 +15,14 @@ double radice(double x) {
 }
 
 double seno(double x) {
-    // Convert degrees to radians
-    x = DEG_TO_RAD(x);
-    
-    double term = x;
-    double sum = x;
-    double num = x;
-    double fact = 1.0;
-    int sign = 1;
+    // Porta x nell'intervallo [0,360)
+    while (x < 0) x += 360;
+    while (x >= 360) x -= 360;
 
-    for (int i = 3; i <= 15; i += 2) {
-        num *= x * x;
-        fact *= i * (i - 1);
-        sign = -sign;
-        term = sign * num / fact;
-        sum += term;
-    }
-    return sum;
+    if (x <= 90) return x / 90.0;
+    if (x <= 180) return (180 - x) / 90.0;
+    if (x <= 270) return (x - 180) / -90.0;
+    return (360 - x) / -90.0;
 }
 
 double coseno(double x) {

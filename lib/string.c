@@ -115,3 +115,32 @@ char* strtok(char* str, const char* delim) {
     
     return token;
 }
+
+double string_to_double(const char* str) {
+    double result = 0.0;
+    double factor = 1.0;
+    int sign = 1;
+    int point_seen = 0;
+
+    // Gestione segno
+    if (*str == '-') {
+        sign = -1;
+        str++;
+    }
+
+    for (; *str; str++) {
+        if (*str == '.') {
+            point_seen = 1;
+            continue;
+        }
+        if (*str < '0' || *str > '9') break;
+        int digit = *str - '0';
+        if (point_seen) {
+            factor /= 10.0;
+            result += digit * factor;
+        } else {
+            result = result * 10.0 + digit;
+        }
+    }
+    return sign * result;
+}
