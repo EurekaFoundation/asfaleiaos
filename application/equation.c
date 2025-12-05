@@ -8,6 +8,7 @@
 #include "../include/math.h"
 #include "../include/equation.h"
 #include "../include/read_input.h"
+#include "../include/scientificprograms.h"
 
 int equation(){
 
@@ -55,6 +56,18 @@ int equation(){
         print_string("\n");
     }
 
+    char input[256];
 
+    print_string("Vuoi continuare o uscire?\n");
+    print_string("Premi un tasto per continuare, o 'q' per uscire: ");
+    read_input(input);
+    if (input[0] == 'q' || input[0] == 'Q') {
+        
+    vga_clear_screen();
+    scientificprograms();
+     return 0;
+    } else {
+        equation();
+    }
     return 0;
 }

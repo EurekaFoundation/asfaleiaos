@@ -15,6 +15,7 @@
 #include "../include/alert.h"
 #include "../include/scientificprograms.h"
 #include "../include/functions.h"
+#include "../include/equation.h"
 
 #define WINDOW_WIDTH 60
 #define WINDOW_HEIGHT 15
@@ -52,7 +53,7 @@ int scientificprograms() {
     print_string("2. Generator of functions");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 4);
-    print_string("3. ");
+    print_string("3. Equations Solver");
     
     vga_set_cursor(WINDOW_X + 2, WINDOW_Y + 5);
     print_string("4. ");
@@ -99,7 +100,9 @@ int scientificprograms() {
                 break;
                 
             case '3':
-                
+                vga_clear_screen();
+                equation();
+                running = 0;
                 break;
                 
             case '4':

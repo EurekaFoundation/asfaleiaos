@@ -158,10 +158,10 @@ int app_nuntius(void) {
     nuntius();
     return 0;
 }
-int app_equation() {
+/*int app_equation() {
     equation();
     return 0;
-}
+}*/
 
 struct command {
     const char* name;        
@@ -191,7 +191,7 @@ static const struct command commands[] = {
     {"status", appstatus_of_pc, 0, "Show the status of the PC"},
     {"deldir", appdelete_dir, 1, "Delete a directory"},
     {"nuntius", app_nuntius, 0, "Chat with the AI"},
-    {"equation", app_equation, 0, "Equation"},
+    //{"equation", app_equation, 0, "Equation"},
     {0, 0, 0, 0}
 };
 

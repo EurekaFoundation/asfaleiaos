@@ -39,6 +39,8 @@ int scientificalc(/*int args, char* argv[]*/) {
         print_string("quadrato <number> - calculate the square of a number\n");
         print_string("seno <number> - calculate the sine of a number (in degrees)\n");
         print_string("coseno <number> - calculate the cosine of a number (in degrees)\n");
+        print_string("ln <number> - calculate the natural logarithm of a number\n");
+        print_string("pow <base> <exponent> - calculate the power of a base raised to an exponent\n");
         continue;
     }else if(strncmp(input, "radice ", 7) == 0) {
     double valore = string_to_double(input + 7); // Converte la parte dopo "radice "
@@ -55,7 +57,7 @@ int scientificalc(/*int args, char* argv[]*/) {
         print_string("Risultato: ");
         print_double(risultato);
         print_string("\n");
-    } else if(strncmp(input, "seno", 5) == 0) {
+    } else if(strncmp(input, "seno ", 5) == 0) {
         double valore = string_to_double(input + 5); // Converte la parte dopo "seno "
         double risultato = seno(valore);
         print_string("Risultato: ");
