@@ -1,0 +1,14 @@
+print "INIZIO TEST"
+
+function somma(a, b)
+    print "DENTRO SOMMA"
+    let risultato a
+    add risultato b
+    print "RISULTATO:"
+    print risultato
+    return
+end
+
+print "PRIMA CALL"
+call somma(2, 3)
+print "DOPO CALL"

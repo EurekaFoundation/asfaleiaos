@@ -18,6 +18,7 @@
 #include "../include/scientific.h"
 #include "../include/alert.h"
 #include "../include/scientificprograms.h"
+#include "../include/filemanager.h"
 
 #define WINDOW_WIDTH 60
 #define WINDOW_HEIGHT 15
@@ -35,7 +36,7 @@ int index() {
     print_string("   / /\\ \\  \\___ \\|  __/ /\\ \\ | |    |  __|   | |   / /\\ \\   | |  | |\\___ \\    \\\n");
     print_string("  / ____ \\ ____ | | / ____ \\| |____| |____ _| |_ / ____ \\  | |__| |____) |   \\\n");
     print_string(" /_/    \\_\\_____/|_|/_/    \\_\\______|______|____/_/    \\_\\  \\____/|_____/    \\\n");
-    print_string("Asfaleia OS 0.0.1 Copyright Vincenzo M. Franchino (c) 2025\n");
+    print_string("Asfaleia OS 0.0.1 Copyright Vincenzo M. Franchino (c) 2026\n");
 
 
     // Create main window
@@ -91,7 +92,7 @@ int index() {
                 // File Manager
                 vga_clear_screen();
                 //list_files(0, NULL);
-                alert();
+                filemanager();
                 running = 0;
                 return 0;
                 
@@ -118,7 +119,7 @@ int index() {
             case '5':
                 // AI
                 vga_clear_screen();
-                nuntius(0, NULL);
+                nuntius();
                 running = 0;
                 break;
             case '6':

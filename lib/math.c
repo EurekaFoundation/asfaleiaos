@@ -100,3 +100,66 @@ double coseno(double x) {
     }
     return sum;
 }
+// Additional math functions needed by elang
+double sqrt(double x) {
+    if (x < 0) return 0;
+    double guess = x;
+    double epsilon = 0.000001;
+    while ((guess * guess - x) > epsilon || (x - guess * guess) > epsilon) {
+        guess = 0.5 * (guess + x / guess);
+    }
+    return guess;
+}
+
+double sin(double x) {
+    x = DEG_TO_RAD(x);
+    double term = x;
+    double sum = x;
+    for (int n = 1; n < 20; n++) {
+        term *= -x * x / ((2*n)*(2*n+1));
+        sum += term;
+    }
+    return sum;
+}
+
+double cos(double x) {
+    return coseno(x);
+}
+
+double tan(double x) {
+    double c = cos(x);
+    if (c < 0.0001 && c > -0.0001) return 0.0;
+    return sin(x) / c;
+}
+
+double exp(double x) {
+    double sum = 1.0;
+    double term = 1.0;
+    for (int n = 1; n < 50; n++) {
+        term *= x / n;
+        sum += term;
+        if (term < 1e-10 && term > -1e-10) break;
+    }
+    return sum;
+}
+
+double floor(double x) {
+    int i = (int)x;
+    if (x < 0 && x != i) return i - 1;
+    return i;
+}
+
+double ceil(double x) {
+    int i = (int)x;
+    if (x > 0 && x != i) return i + 1;
+    return i;
+}
+
+double round(double x) {
+    if (x >= 0) return floor(x + 0.5);
+    return ceil(x - 0.5);
+}
+
+double fabs(double x) {
+    return x < 0 ? -x : x;
+}

@@ -40,13 +40,24 @@ char* strcpy(char* dest, const char* src) {
     return original_dest;
 }
 
-/*void* memset(void* s, int c, size_t n) {
+void* memset(void* s, int c, size_t n) {
     unsigned char* p = s;
     for (size_t i = 0; i < n; i++) {
         p[i] = (unsigned char)c;
     }
     return s;
-}*/
+}
+
+void* memmove(void* dest, const void* src, size_t n) {
+    unsigned char* d = dest;
+    const unsigned char* s = src;
+    if (d < s) {
+        for (size_t i = 0; i < n; i++) d[i] = s[i];
+    } else if (d > s) {
+        for (size_t i = n; i > 0; i--) d[i-1] = s[i-1];
+    }
+    return dest;
+}
 
 void* memcpy(void* dest, const void* src, size_t n) {
     unsigned char* d = dest;
@@ -88,6 +99,16 @@ char* strchr(const char* s, int c) {
         s++;
     }
     return NULL;
+}
+
+char* strrchr(const char* s, int c) {
+    const char* last = NULL;
+    while (*s != '\0') {
+        if (*s == c)
+            last = s;
+        s++;
+    }
+    return (char*)last;
 }
 
 char* strtok(char* str, const char* delim) {

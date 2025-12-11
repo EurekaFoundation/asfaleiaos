@@ -210,7 +210,7 @@ char input[MAX_INPUT_LENGTH];
     vga_set_color(LIGHT_RED);
     print_string("AI is not implemented yet\n");
     print_string("Press any key to return to the shell\n");
-    char c = get_key();
+    int c = get_key();
     read_input(&c);
     if (c == 'c') {
         vga_clear_screen();

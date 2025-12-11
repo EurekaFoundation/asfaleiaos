@@ -28,7 +28,7 @@
 #include "../include/fs_global.h"
 #include "../include/read_input.h"
 #include "../include/nuntius.h"
-#include "../include/equation.h"
+#include "../include/elang.h"
 
 
 //#define MAX_INPUT_LENGTH 128  // Lunghezza massima dell'input
@@ -72,7 +72,7 @@ int appdelete_dir(int argc, char* argv[]);
 int app_index(void);
 int app_nuntius(void);
 int appstatus_of_pc(void);
-int app_equation(void);
+int app_elang(int argc, char* argv[]);
 
 int app_echo(int argc, char* argv[]) {
     echo(argc, argv);
@@ -158,6 +158,10 @@ int app_nuntius(void) {
     nuntius();
     return 0;
 }
+int app_elang(int argc, char* argv[]) {
+    elang(argc, argv);
+    return 0;
+}
 /*int app_equation() {
     equation();
     return 0;
@@ -191,6 +195,7 @@ static const struct command commands[] = {
     {"status", appstatus_of_pc, 0, "Show the status of the PC"},
     {"deldir", appdelete_dir, 1, "Delete a directory"},
     {"nuntius", app_nuntius, 0, "Chat with the AI"},
+    {"elang", elang, 1, "Execute Elang script"},
     //{"equation", app_equation, 0, "Equation"},
     {0, 0, 0, 0}
 };
@@ -338,7 +343,7 @@ void shell() {
     print_string("   / /\\ \\  \\___ \\|  __/ /\\ \\ | |    |  __|   | |   / /\\ \\   | |  | |\\___ \\    \\\n");
     print_string("  / ____ \\ ____ | | / ____ \\| |____| |____ _| |_ / ____ \\  | |__| |____) |   \\\n");
     print_string(" /_/    \\_\\_____/|_|/_/    \\_\\______|______|____/_/    \\_\\  \\____/|_____/    \\\n");
-    print_string("Asfaleia OS 0.0.1 Copyright Vincenzo M. Franchino (c) 2025\n");
+    print_string("Asfaleia OS 0.0.1 Copyright Vincenzo M. Franchino (c) 2026\n");
     print_string("Type 'help' for a list of available commands or 'index' for the Desktop of Asfaleia\n");
     print_string("\n");
 

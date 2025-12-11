@@ -16,7 +16,7 @@
 static int read_line(char *buf, int max) {
     int i = 0;
     while (1) {
-        char c = get_key();
+        int c = get_key();
         if (c == 0) continue;             // nessun tasto
         if (c == '\n' || c == '\r') {
             buf[i] = '\0';

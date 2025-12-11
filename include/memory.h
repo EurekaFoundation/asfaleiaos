@@ -15,7 +15,6 @@ void my_free(void* ptr);
 void* alloc_pace(void);
 void free_page(void* page);
 void kfree(void* ptr);
-void memset(void* dest, char val, size_t len);
-void kfree(void* ptr);
+void* memset(void* s, int c, size_t n);
 
 #endif

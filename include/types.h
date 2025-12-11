@@ -14,7 +14,10 @@ typedef signed int int32_t;
 typedef signed long long int64_t;
 
 typedef unsigned int size_t;
-typedef enum { FALSE = 0, TRUE = 1 } bool; 
+typedef enum { FALSE = 0, TRUE = 1 } t_bool;
+
+// For C99 compatibility, define bool as macro pointing to _Bool or int
+#define bool _Bool
 
 // Network types
 typedef struct {

@@ -6,7 +6,7 @@
 
 // Funzioni del driver della tastiera
 void keyboard_handler();
-char get_key();
+int get_key();
 char scancode_to_ascii(unsigned char scancode);
 unsigned char read_keyboard_scancode();  // Aggiungi questa dichiarazione
 
