@@ -197,9 +197,10 @@ char scancode_to_ascii(unsigned char scancode) {
         case 0x30: return shift_pressed ? 'B' : 'b';      // B
         case 0x31: return shift_pressed ? 'N' : 'n';      // N
         case 0x32: return shift_pressed ? 'M' : 'm';      // M
-        case 0x33: return shift_pressed ? '<' : ',';      // , <
-        case 0x34: return shift_pressed ? '>' : '.';      // . >
-        case 0x35: return shift_pressed ? '?' : '/';      // / ?
+        case 0x33: return shift_pressed ? ';' : ',';      // , ;
+        case 0x34: return shift_pressed ? ':' : '.';      // . :
+        case 0x35: return shift_pressed ? '_' : '-';      // / ?
+        case 0x56: return shift_pressed ? '>' : '<';      // < >
         
         // Space and numpad
         case 0x39: return ' ';      // Space
@@ -233,6 +234,8 @@ char scancode_to_ascii(unsigned char scancode) {
         case 0x44: return 250;      // F10
         case 0x57: return 251;      // F11
         case 0x58: return 252;      // F12
+        //case 0x48: return 72;   // Up Arrow
+        //case 0x50: return 80;   // Down Arrow
         
         default: return 0;
     }
