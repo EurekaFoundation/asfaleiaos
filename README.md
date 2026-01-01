@@ -33,3 +33,7 @@ make iso
    
 # Contact Us
   If you wish to contact us, you can do so by email at asfaleia@eurekafoundation.it or directly to the developer at vincenzomaria.franchino@eurekafoundation.it .
+
+# Social
+ Telegram: https://t.me/asfaleiaos
+ Discord: https://discord.gg/Q5PYqEapW5
