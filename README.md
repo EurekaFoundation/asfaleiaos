@@ -22,7 +22,10 @@ make qemu
 make clean
 ```
 
-
+ To create ISO file use this command
+```
+make iso 
+```
   
 # Contact Us
   If you wish to contact us, you can do so by email at asfaleia@eurekafoundation.it or directly to the developer at vincenzomaria.franchino@eurekafoundation.it .
