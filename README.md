@@ -7,19 +7,20 @@
 
 # How to compile and run the OS
  Compile the code   
-'''
-  *make*
-'''   
+
+```
+*make*
+``` 
 
  Run the OS   
-  '''
-  *make qemu*
-  '''   
+  ```
+*make qemu*
+```
 
  If you have modified the code, run this command before recompiling  
- '''
- *make clean*
- '''
+```
+*make clean*
+```
 
 
   
