@@ -26,6 +26,10 @@ make clean
 ```
 make iso 
 ```
-  
+
+# The E language
+
+ This OS have a language created by us, the name is Elang or E language. This language is very simple, it has the basic features of a programming language, it is not very complex. For use this type "elang" in the shell of the OS.
+   
 # Contact Us
   If you wish to contact us, you can do so by email at asfaleia@eurekafoundation.it or directly to the developer at vincenzomaria.franchino@eurekafoundation.it .
