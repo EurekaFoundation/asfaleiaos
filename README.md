@@ -7,18 +7,18 @@
 
 # How to compile and run the OS
  Compile the code   
-'''terminal
-  make
+'''
+  *make*
 '''   
 
  Run the OS   
-  '''terminal
-  make qemu
+  '''
+  *make qemu*
   '''   
 
  If you have modified the code, run this command before recompiling  
- '''terminal
- make clean
+ '''
+ *make clean*
  '''
 
 
