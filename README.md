@@ -36,4 +36,5 @@ make iso
 
 # Social
  Telegram: https://t.me/asfaleiaos 
+
  Discord: https://discord.gg/Q5PYqEapW5
