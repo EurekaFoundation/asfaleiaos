@@ -5,5 +5,23 @@
  # How the code work
    This code is very simple. The programmes and commands in this OS are located in the application folder. If you want to create a programme, just create a .c file in this folder. If you then want to launch these using a command, you need to create a file in the include folder in which you declare all the functions present in the new programme file you have created. Next, you need to go to the shell. c (located in the application folder) and include the .h file created in the include folder, then declare the programme function, then insert a call to the main function of the programme you have created (the function that starts and runs this programme) within this function, then insert the command in the commands array (static const struct command commands[] ={...}). By doing so, the programme can be started from the shell. However, we invite you to view the written code and the code of the existing programmes if you want to contribute to finding solutions to any bugs and/or to the creation of new applications and features that could be useful. In addition to this, reviewing the existing code helps those seeing it for the first time to understand how it all works, as standard libraries are not used, but similar ones have been recreated, although they do not always have the same keywords or the same features, and sometimes the syntax is slightly different.
 
+# How to compile and run the OS
+ Compile the code   
+'''terminal
+  make
+'''   
+
+ Run the OS   
+  '''terminal
+  make qemu
+  '''   
+
+ If you have modified the code, run this command before recompiling  
+ '''terminal
+ make clean
+ '''
+
+
+  
 # Contact Us
   If you wish to contact us, you can do so by email at asfaleia@eurekafoundation.it or directly to the developer at vincenzomaria.franchino@eurekafoundation.it .
